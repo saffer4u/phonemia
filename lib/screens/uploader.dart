@@ -56,60 +56,12 @@ class _UploaderScreenState extends State<UploaderScreen> {
     String selectedCategory = categories[2];
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (ctx) => AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              backgroundColor: bg1,
-              title: Text(
-                "Log Out",
-                style: TextStyle(
-                    fontFamily: 'Baloo2',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-              content: const Text(
-                "Confirm to Log Out",
-                style: TextStyle(
-                  fontFamily: 'Baloo2',
-                  color: Colors.white,
-                ),
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () async {
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.popUntil(
-                      context,
-                      ModalRoute.withName(HomeScreen.routeName),
-                    );
-                  },
-                  child: Text(
-                    "Confirm",
-                    style: TextStyle(
-                      fontFamily: 'Baloo2',
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(ctx).pop();
-                  },
-                  child: Text(
-                    "Cancel",
-                    style: TextStyle(
-                      fontFamily: 'Baloo2',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
+          Navigator.of(context).pushNamed(DeleteScreen.routeName);
         },
         backgroundColor: HexColor('#002947'),
-        child: Icon(Icons.logout),
+        child: Icon(Icons.delete, color: Colors.redAccent),
       ),
       backgroundColor: bg1,
       body: ModalProgressHUD(
@@ -133,11 +85,63 @@ class _UploaderScreenState extends State<UploaderScreen> {
                         borderRadius: BorderRadius.circular(40),
                         color: HexColor('#053159'),
                       ),
+                      //!Upper button
                       child: IconButton(
-                        // icon: Image.asset('assets/icons/Logout.png'),
-                        icon: const Icon(Icons.delete, color: Colors.redAccent),
-                        onPressed: () => Navigator.of(context)
-                            .pushNamed(DeleteScreen.routeName),
+                        icon: Image.asset('assets/icons/Logout.png'),
+                        // icon: const Icon(Icons.delete, color: Colors.redAccent),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              backgroundColor: bg1,
+                              title: Text(
+                                "Log Out",
+                                style: TextStyle(
+                                    fontFamily: 'Baloo2',
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              content: const Text(
+                                "Confirm to Log Out",
+                                style: TextStyle(
+                                  fontFamily: 'Baloo2',
+                                  color: Colors.white,
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () async {
+                                    await FirebaseAuth.instance.signOut();
+                                    Navigator.popUntil(
+                                      context,
+                                      ModalRoute.withName(HomeScreen.routeName),
+                                    );
+                                  },
+                                  child: Text(
+                                    "Confirm",
+                                    style: TextStyle(
+                                      fontFamily: 'Baloo2',
+                                    ),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(ctx).pop();
+                                  },
+                                  child: Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                      fontFamily: 'Baloo2',
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                     Text(
@@ -491,8 +495,6 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                                 onToggle: (index) {
                                                   selectedCategory =
                                                       categories[index!];
-                                                  print(
-                                                      'Switched to: ${selectedCategory}');
                                                 },
                                                 cornerRadius: 16.45,
                                                 activeBgColor: [
@@ -527,7 +529,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                                     fontSize: 19.75,
                                                   ),
                                                 ],
-                                                activeFgColor: Colors.white,
+                                                activeFgColor: darkbluebutton,
                                               ),
                                             ),
                                           ),

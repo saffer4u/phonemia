@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           LogInScreen.routeName: (ctx) => LogInScreen(),
           UploaderScreen.routeName: (ctx) => UploaderScreen(),
-          DeleteScreen.routeName:(ctx)=>DeleteScreen(),
+          DeleteScreen.routeName: (ctx) => DeleteScreen(),
         },
       ),
     );
