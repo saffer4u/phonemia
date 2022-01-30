@@ -59,11 +59,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Text('Something went wrong');
-                  }
-
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("Loading");
+                    return Center(
+                      child: Text(
+                        'Something went wrong...',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Baloo",
+                        ),
+                      ),
+                    );
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return Center(
+                        child: Text(
+                      "Loading...",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Baloo",
+                      ),
+                    ));
+                  } else if (snapshot.data!.size == 0) {
+                    return Center(
+                        child: Text(
+                      "No Memes Avalable",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Baloo",
+                      ),
+                    ));
                   }
 
                   return ListView(
