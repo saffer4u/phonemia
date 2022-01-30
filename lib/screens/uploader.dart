@@ -16,6 +16,7 @@ class UploaderScreen extends StatefulWidget {
   static const routeName = "uploader";
   const UploaderScreen({Key? key}) : super(key: key);
 
+  @override
   _UploaderScreenState createState() => _UploaderScreenState();
 }
 
@@ -61,11 +62,11 @@ class _UploaderScreenState extends State<UploaderScreen> {
           Navigator.of(context).pushNamed(DeleteScreen.routeName);
         },
         backgroundColor: HexColor('#002947'),
-        child: Icon(Icons.delete, color: Colors.redAccent),
+        child: const Icon(Icons.delete, color: Colors.redAccent),
       ),
       backgroundColor: bg1,
       body: ModalProgressHUD(
-        progressIndicator: CircularProgressIndicator(
+        progressIndicator: const CircularProgressIndicator(
           color: Colors.white,
           backgroundColor: Colors.grey,
         ),
@@ -96,7 +97,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
                               backgroundColor: bg1,
-                              title: Text(
+                              title: const Text(
                                 "Log Out",
                                 style: TextStyle(
                                     fontFamily: 'Baloo2',
@@ -119,7 +120,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                       ModalRoute.withName(HomeScreen.routeName),
                                     );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Confirm",
                                     style: TextStyle(
                                       fontFamily: 'Baloo2',
@@ -130,7 +131,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                   onPressed: () {
                                     Navigator.of(ctx).pop();
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Cancel",
                                     style: TextStyle(
                                       fontFamily: 'Baloo2',
@@ -167,7 +168,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                       child: Column(
                         children: [
                           InkWell(
-                            customBorder: RoundedRectangleBorder(
+                            customBorder: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(15),
                                     topRight: Radius.circular(15))),
@@ -220,7 +221,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                   const SizedBox(
                                     width: 15.08,
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width - 120,
                                     child: Text(
@@ -286,7 +287,7 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                     audioSelected,
                                     style: customTextStyle(19.74),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width - 120,
                                     child: Center(
@@ -623,8 +624,8 @@ class _UploaderScreenState extends State<UploaderScreen> {
                                             "Database Listing Failed Please try again");
                                     return;
                                   }
-                                  print(uploadedCard);
-                                  print(uploadData.toString());
+                                  // print(uploadedCard);
+                                  // print(uploadData.toString());
 
                                   setState(() {
                                     _uploading = false;
@@ -674,11 +675,11 @@ class _UploaderScreenState extends State<UploaderScreen> {
           return AlertDialog(
             title: Text(
               title,
-              style: TextStyle(fontFamily: 'baloo'),
+              style: const TextStyle(fontFamily: 'baloo'),
             ),
             actions: [
               TextButton(
-                child: Text(
+                child: const Text(
                   "Ok",
                   style: TextStyle(fontFamily: 'baloo'),
                 ),

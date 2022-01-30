@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 
 class Storage {
@@ -18,8 +18,8 @@ class Storage {
       return await storageInstance
           .ref(uploadRes.metadata!.fullPath)
           .getDownloadURL();
-    } on FirebaseException catch (e) {
-      print("Upload Error : ${e.toString()}");
+    } on FirebaseException {
+      // print("Upload Error : ${e.toString()}");
       return null;
     }
   }

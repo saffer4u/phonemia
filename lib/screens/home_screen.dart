@@ -1,11 +1,14 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:phonemia/constants/colors.dart';
-import 'package:phonemia/screens/wrapper.dart';
+
+import '../constants/colors.dart';
+import 'wrapper.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "home_screen";
+
+  const HomeScreen({Key? key}) : super(key: key);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -15,10 +18,22 @@ class _HomeScreenState extends State<HomeScreen> {
       FirebaseFirestore.instance.collection('meme').snapshots();
   AudioPlayer audioPlayer = AudioPlayer();
 
-  play(String url) async {
+  play(String url, String title) async {
     int result = await audioPlayer.play(url);
     if (result == 1) {
-      print('Successful');
+      final snackBar = SnackBar(
+        duration: const Duration(milliseconds: 700),
+        content: Text('Playing : $title'),
+        backgroundColor: (Colors.black12),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } else {
+      final snackBar = SnackBar(
+        duration: const Duration(milliseconds: 700),
+        content: Text('Error while Playing : $title'),
+        backgroundColor: (Colors.black12),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
@@ -31,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator.of(context).pushNamed(Wrapper.routeName);
         },
-        child: Text(
+        child: const Text(
           "Admin",
           style: TextStyle(
             color: Colors.white,
@@ -43,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 "Memes",
                 style: TextStyle(
@@ -60,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Center(
+                    return const Center(
                       child: Text(
                         'Something went wrong...',
                         style: TextStyle(
@@ -71,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                         child: Text(
                       "Loading...",
                       style: TextStyle(
@@ -80,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ));
                   } else if (snapshot.data!.size == 0) {
-                    return Center(
+                    return const Center(
                         child: Text(
                       "No Memes Avalable",
                       style: TextStyle(
@@ -91,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
 
                   return ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     children:
                         snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
@@ -102,13 +117,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: boxshd2,
                         child: ListTile(
                           onTap: () async {
-                            await play(data['audioUrl'].toString());
+                            await play(
+                                data['audioUrl'].toString(), data['title']);
                           },
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           title: Text(
                             data['title'],
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontFamily: 'Baloo',
                               fontSize: 20,
@@ -119,14 +135,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 data['description'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white70,
                                   fontFamily: 'Baloo2',
                                 ),
                               ),
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Category : ",
                                     style: TextStyle(
                                       color: Colors.white,
@@ -135,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   Text(
                                     data['category'],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontFamily: 'Baloo2',
                                     ),

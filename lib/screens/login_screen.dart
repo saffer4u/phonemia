@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:phonemia/constants/colors.dart';
-import 'package:phonemia/screens/uploader.dart';
+
+import '../constants/colors.dart';
 
 class LogInScreen extends StatefulWidget {
   static const routeName = "/";
-  LogInScreen({Key? key}) : super(key: key);
+  const LogInScreen({Key? key}) : super(key: key);
 
   @override
   State<LogInScreen> createState() => _LogInScreenState();
@@ -41,7 +41,7 @@ class _LogInScreenState extends State<LogInScreen> {
         //       ),
         // ),
         body: ModalProgressHUD(
-          progressIndicator: CircularProgressIndicator(
+          progressIndicator: const CircularProgressIndicator(
             color: Colors.white,
             backgroundColor: Colors.grey,
           ),
@@ -101,7 +101,7 @@ class _LogInScreenState extends State<LogInScreen> {
                                       fontFamily: 'Baloo2',
                                       color: HexColor('#B2DAFF')),
                                   keyboardType: TextInputType.emailAddress,
-                                  decoration: CustomInputDecoration(
+                                  decoration: customInputDecoration(
                                       hnttxt: 'Email',
                                       prfxicn: Image.asset(
                                           'assets/icons/Emailsign.png')),
@@ -130,14 +130,15 @@ class _LogInScreenState extends State<LogInScreen> {
                                             .replaceAll(RegExp(r"\s+"),
                                                 "") //replaceAll(RegExp(r"\s+") to do not count space
                                             .length <
-                                        6)
+                                        6) {
                                       return "Password can't be less than 6 characters";
+                                    }
                                   },
                                   style: TextStyle(
                                       fontFamily: 'Baloo2',
                                       color: HexColor('#B2DAFF')),
                                   // obscureText: true,
-                                  decoration: CustomInputDecoration(
+                                  decoration: customInputDecoration(
                                       hnttxt: 'Password',
                                       prfxicn:
                                           Image.asset('assets/icons/Lock.png')),
@@ -169,7 +170,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         borderRadius: BorderRadius.circular(12)),
                     primary: primarybtn,
                     elevation: 2,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       fontFamily: 'Baloo',
                       fontSize: 18,
                     ),
@@ -197,7 +198,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   },
                   child: const Text('Login'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 2.72,
                 ),
                 ElevatedButton(
@@ -206,7 +207,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(13))),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Request to become an Admin",
                       style: TextStyle(
                         fontFamily: 'Baloo',
@@ -221,14 +222,14 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 
-  InputDecoration CustomInputDecoration(
+  InputDecoration customInputDecoration(
       {String? hnttxt, required Image prfxicn}) {
     return InputDecoration(
         hintStyle: TextStyle(color: HexColor('DFDFDF'), fontFamily: 'Baloo2'),
         hintText: hnttxt,
         errorStyle: TextStyle(color: Colors.red[400]),
         isDense: true,
-        contentPadding: EdgeInsets.symmetric(vertical: 1),
+        contentPadding: const EdgeInsets.symmetric(vertical: 1),
         enabledBorder: InputBorder.none,
         errorBorder: InputBorder.none,
         focusedErrorBorder: InputBorder.none,
@@ -236,7 +237,7 @@ class _LogInScreenState extends State<LogInScreen> {
           padding: const EdgeInsets.only(right: 10),
           child: prfxicn,
         ),
-        prefixIconConstraints: BoxConstraints(
+        prefixIconConstraints: const BoxConstraints(
           minHeight: 2,
         ),
         focusedBorder: InputBorder.none);

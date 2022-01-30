@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:phonemia/constants/colors.dart';
-import 'package:phonemia/screens/wrapper.dart';
+
+import '../constants/colors.dart';
 
 class DeleteScreen extends StatefulWidget {
   static const routeName = "delete_screen";
+
+  const DeleteScreen({Key? key}) : super(key: key);
   @override
   _DeleteScreenState createState() => _DeleteScreenState();
 }
@@ -25,7 +26,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
     return Scaffold(
       backgroundColor: bg1,
       body: ModalProgressHUD(
-        progressIndicator: CircularProgressIndicator(
+        progressIndicator: const CircularProgressIndicator(
           color: Colors.white,
           backgroundColor: Colors.grey,
         ),
@@ -34,8 +35,8 @@ class _DeleteScreenState extends State<DeleteScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Delete Memes",
                   style: TextStyle(
@@ -51,7 +52,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text(
                           'Something went wrong...',
                           style: TextStyle(
@@ -62,7 +63,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                       );
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                           child: Text(
                         "Loading...",
                         style: TextStyle(
@@ -71,7 +72,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                         ),
                       ));
                     } else if (snapshot.data!.size == 0) {
-                      return Center(
+                      return const Center(
                           child: Text(
                         "No Memes Avalable",
                         style: TextStyle(
@@ -82,7 +83,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                     }
 
                     return ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       children:
                           snapshot.data!.docs.map((DocumentSnapshot document) {
                         Map<String, dynamic> data =
@@ -104,7 +105,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       backgroundColor: bg1,
-                                      title: Text(
+                                      title: const Text(
                                         "Delete",
                                         style: TextStyle(
                                             fontFamily: 'Baloo2',
@@ -118,14 +119,14 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                         children: [
                                           Text(
                                             data['title'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontFamily: 'Baloo',
                                               color: Colors.white,
                                             ),
                                           ),
                                           Text(
                                             data['description'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontFamily: 'Baloo2',
                                               color: Colors.white,
                                             ),
@@ -155,7 +156,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                               _uploading = false;
                                             });
                                           },
-                                          child: Text(
+                                          child: const Text(
                                             "Confirm",
                                             style: TextStyle(
                                               fontFamily: 'Baloo2',
@@ -166,7 +167,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                           onPressed: () {
                                             Navigator.of(ctx).pop();
                                           },
-                                          child: Text(
+                                          child: const Text(
                                             "Cancel",
                                             style: TextStyle(
                                               fontFamily: 'Baloo2',
@@ -178,15 +179,15 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                     ),
                                   );
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.redAccent,
                                 )),
-                            contentPadding: EdgeInsets.symmetric(
+                            contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
                             title: Text(
                               data['title'],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Baloo',
                                 fontSize: 20,
@@ -197,14 +198,14 @@ class _DeleteScreenState extends State<DeleteScreen> {
                               children: [
                                 Text(
                                   data['description'],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white70,
                                     fontFamily: 'Baloo2',
                                   ),
                                 ),
                                 Row(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Category : ",
                                       style: TextStyle(
                                         color: Colors.white,
@@ -213,7 +214,7 @@ class _DeleteScreenState extends State<DeleteScreen> {
                                     ),
                                     Text(
                                       data['category'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Baloo2',
                                       ),
