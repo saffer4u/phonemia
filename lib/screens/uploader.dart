@@ -9,6 +9,7 @@ import 'package:phonemia/services/database.dart';
 import 'package:phonemia/services/storage.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import 'delete_screen.dart';
 import 'home_screen.dart';
 
 class UploaderScreen extends StatefulWidget {
@@ -133,8 +134,10 @@ class _UploaderScreenState extends State<UploaderScreen> {
                         color: HexColor('#053159'),
                       ),
                       child: IconButton(
-                        icon: Image.asset('assets/icons/Logout.png'),
-                        onPressed: () {},
+                        // icon: Image.asset('assets/icons/Logout.png'),
+                        icon: const Icon(Icons.delete, color: Colors.redAccent),
+                        onPressed: () => Navigator.of(context)
+                            .pushNamed(DeleteScreen.routeName),
                       ),
                     ),
                     Text(

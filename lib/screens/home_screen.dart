@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection('meme').snapshots();
-  AudioPlayer audioPlayer = AudioPlayer(mode: PlayerMode.LOW_LATENCY);
+  AudioPlayer audioPlayer = AudioPlayer();
 
   play(String url) async {
     int result = await audioPlayer.play(url);
@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
 
                   return ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     children:
                         snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =

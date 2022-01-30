@@ -170,7 +170,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: _emailController.text,
                           password: _passwrodController.text);
-                      Navigator.of(context).pushNamed(UploaderScreen.routeName);
+                      // Navigator.of(context).pushNamed(UploaderScreen.routeName);
                     } catch (e) {
                       setState(() {
                         errmsg = "Invalid Cradiential";

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:phonemia/screens/delete_screen.dart';
 import 'package:phonemia/screens/home_screen.dart';
 import 'package:phonemia/screens/uploader.dart';
 import 'package:phonemia/screens/wrapper.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (ctx) => HomeScreen(),
           LogInScreen.routeName: (ctx) => LogInScreen(),
           UploaderScreen.routeName: (ctx) => UploaderScreen(),
+          DeleteScreen.routeName:(ctx)=>DeleteScreen(),
         },
       ),
     );
