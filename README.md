@@ -1,16 +1,39 @@
-# phonemia
+# Phonemia
 
-A new Flutter project.
+This is a flutter application for uploading and playing memes it uses firebase as backend.
 
-## Getting Started
+**Download apk** : [Link](https://github.com/saffer4u/phonemia/releases/tag/InitialRelease)
 
-This project is a starting point for a Flutter application.
+**Testing Mail** : team@softkru.com
 
-A few resources to get you started if this is your first Flutter project:
+**Password** : 123456
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Home Screen : 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Home Screen](https://raw.githubusercontent.com/saffer4u/notes/master/uPic/Home&#x20;Screen(&#x20;2022-01-30&#x20;)&#x20;(&#x20;23:09:22&#x20;).png)
+
+On home screen there are list of memes that you can play by just tapping on it.
+
+## Uplading memes :
+
+Only admins are allowd to upload a meme.
+
+To upload a meme login is required click on admin button then you'll be redirectd to the login screen if you are not logged in otherwise you'll be redirected to the uploading screen.
+
+### Log In Screen : 
+
+![Login Screen 1](https://raw.githubusercontent.com/saffer4u/notes/master/uPic/Login&#x20;Screen&#x20;1(&#x20;2022-01-30&#x20;)&#x20;(&#x20;23:09:24&#x20;).png)
+
+### Uploading Screen : 
+
+![Upload Screen](https://raw.githubusercontent.com/saffer4u/notes/master/uPic/tOlYY1(&#x20;2022-01-30&#x20;)&#x20;(&#x20;23:22:56&#x20;).png)
+
+
+
+*All fields are required for uploading meme.
+
+### Delete Meme Screen : 
+
+On this screen admins can delete memes.
+
+![Delete memes screen](https://raw.githubusercontent.com/saffer4u/notes/master/uPic/Delete&#x20;Screen(&#x20;2022-01-30&#x20;)&#x20;(&#x20;23:09:20&#x20;).png)
